@@ -1,0 +1,55 @@
+{% extends 'store/main.html' %}
+{% load static %}
+<link rel='stylesheet',type='text/css' href="{% static 'CSS/main.css' %}" >
+{% block content %}
+
+<form action="">
+	<center>
+	<input type="text" name="searchProduct" placeholder="Search Product" id="SearchProduct" class="color-yellow bg-dark"/>
+	</center>
+</form>
+
+{% if searchProducts %}
+<div class = "row">
+	<span><h3 class="bg-dark p-2" > Searched Items</h3></span>
+    {% for items in searchProducts %}
+		<div class="col col-lg-4 col-xxl-3 col-sm-6 col-12 ">
+			<img class="thumbnail" src="{{items.imageURL}}">
+			<div class="box-element product">
+				<h6><strong> {{items.name}}</strong></h6>
+				<hr>
+
+				<button data-product="{{items.id}}" data-action='add' class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<a class="btn btn-outline-success" href="{% url 'productDetails' items.name %}">View</a>
+			</div>
+			<div class="box-element product p-4">
+				<h4 style=" float: right ;"><strong>{{items.price}} ₹</strong></h4>
+			</div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endif %}
+
+<br>
+<br>
+
+<div class = "row">
+	<center><h3 class="bg-dark p-2 " style="border-radius: 30px;"> All Items</h3></center>
+    {% for items in Products %}
+		<div class="col  col-lg-4 col-xxl-3 col-sm-6 col-12" >
+			<img class="thumbnail" src="{{items.imageURL}}">
+			<div class="box-element product">
+				<h6><strong> {{items.name}}</strong></h6>
+				<hr>
+				<button data-product="{{items.id}}" data-action='add' class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+				<a class="btn btn-outline-success" href="{% url 'productDetails' items.name %}">View</a>
+			</div>
+			<div class="box-element product p-4">
+				<h4 style=" float: right ;"><strong>{{items.price}} ₹</strong></h4>
+			</div>
+			</div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

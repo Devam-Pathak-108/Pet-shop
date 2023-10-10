@@ -1,0 +1,39 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+
+<div class='row'>
+    <center>
+    <h1 class=" color-dark ">
+        Talk to us!!
+    </h1>
+    </center>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div class="col col-md-6 col-sm-12">
+    <img src="{% static 'images/contactUs.jfif' %}" />
+    </div>
+    <div class="col col-md-6 col-sm-12">
+    <form action="https://formspree.io/f/xvojvdjj" method="POST">
+        <h4 class="color-dark">
+            Email:
+        </h4>
+        <hr>
+        <input type="Email" name='Email' required  style="border-radius:50px; height:50px; width:100%; " class="bg-dark color-yellow"/>
+        <br>
+        <br>
+        <h4 class="color-dark">
+            Description:
+        </h4>
+        <hr>
+        <textarea required placeholder="Tell us!!"  name='Description' required style="border-radius:5px; height:150px; width:100%;" class="bg-dark color-yellow"></textarea>
+        <br>
+        <br>
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</div>
+</div>
+
+{% endblock content %}
